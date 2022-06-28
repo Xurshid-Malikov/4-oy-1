@@ -3543,24 +3543,19 @@ function Domgachiqaraqol(array, node){
 Domgachiqaraqol(pokemons,elList);
 
 var elSelect = document.querySelector(".js-select");
+let myArray = [];
 
-
-let c = []
-function pic(arr){
-	for (i of arr){
-			
-			c.push(i.type[0])
-
-			var newIt = document.createElement('option');
-
-			newIt.textContent = i.type;
-
-			elSelect.appendChild(newIt); 
-	}
-	console.log(new Set(c));
-	
+for (item of pokemons) {
+  myArray.push(...item.type);
 }
-pic(pokemons)
+
+let mySet = new Set(myArray);
+
+for (const item of Array.from(mySet)) {
+  let li = document.createElement("option");
+  li.textContent = item;
+  elSelect.appendChild(li);
+}
 
 
 var result = [];
@@ -3574,4 +3569,5 @@ elSelect.addEventListener("change",function(){
     }
   })
 	Domgachiqaraqol(result,elList);
+	
 });
