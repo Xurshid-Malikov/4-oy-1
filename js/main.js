@@ -3479,63 +3479,99 @@ var pokemons = [
 
 
 
-for (i of pokemons){
-  var newItam = document.createElement("li");
-  var elImg = document.createElement("img");
-  var elId = document.createElement("span");
-  var elNum = document.createElement("span");
-  var elType = document.createElement("span");
-  var elHeight = document.createElement("span");
-  var elWeight = document.createElement("span");
-  var elCandy = document.createElement("span");
-  var elEgg = document.createElement("span");
-  var elSpawn_chance = document.createElement("span");
-  var elAvg_spawns = document.createElement("span");
-  var elSpawn_time = document.createElement("span");
-  var multipliers = document.createElement("span");
-  var weaknesses = document.createElement("span");
-  var evolution = document.createElement("span");
-  if(i.prev_evolution){
-    var ola = i.prev_evolution[0].num
-    var bang = i.prev_evolution[0].name
-  }
-
-  newItam.setAttribute("class", "iteam")
-  elList.appendChild(newItam)
-  newItam.appendChild(elImg)
-  newItam.appendChild(elId)
-  newItam.appendChild(elNum)
-  newItam.appendChild(elType)
-  newItam.appendChild(elHeight)
-  newItam.appendChild(elWeight)
-  newItam.appendChild(elCandy)
-  newItam.appendChild(elEgg)
-  newItam.appendChild(elSpawn_chance)
-  newItam.appendChild(elAvg_spawns)
-  newItam.appendChild(elSpawn_time)
-  newItam.appendChild(multipliers)
-  newItam.appendChild(weaknesses)
-  newItam.appendChild(evolution)
-
-
-elId.textContent = `id: ${i.id}`;
-elNum.textContent = `num: ${i.num}`
-elImg.src = `${i.img}`
-elImg.setAttribute("alt", "images-pocemens")
-elImg.setAttribute("class", "img")
-elImg.setAttribute("with", "120")
-elImg.setAttribute("height", "120")
-elType.textContent = `type: ${i.type}`
-elHeight.textContent = `height: ${i.height}`
-elWeight.textContent = `weight: ${i.weight}`
-elCandy.textContent = `candy: ${i.candy}`
-elEgg.textContent = `egg: ${i.egg}`
-elSpawn_chance.textContent = `spawn_chance: ${i.spawn_chance}`
-elAvg_spawns.textContent = `avg_spawns: ${i.avg_spawns}`
-elSpawn_time.textContent = `spawn_time: ${i.spawn_time}`
-multipliers.textContent = `multipliers: ${i.multipliers}`
-weaknesses.textContent = `weaknesses: ${i.weaknesses}`
-evolution.textContent = `prev_evolution: ${"num:"} ${ola} ${"name:"} ${bang}`
+function Domgachiqaraqol(array, node){
+	for (i of array){
+		var newItam = document.createElement("li");
+		var elImg = document.createElement("img");
+		var elId = document.createElement("span");
+		var elNum = document.createElement("span");
+		var elType = document.createElement("span");
+		var elHeight = document.createElement("span");
+		var elWeight = document.createElement("span");
+		var elCandy = document.createElement("span");
+		var elEgg = document.createElement("span");
+		var elSpawn_chance = document.createElement("span");
+		var elAvg_spawns = document.createElement("span");
+		var elSpawn_time = document.createElement("span");
+		var multipliers = document.createElement("span");
+		var weaknesses = document.createElement("span");
+		var evolution = document.createElement("span");
+		if(i.prev_evolution){
+			var ola = i.prev_evolution[0].num
+			var bang = i.prev_evolution[0].name
+		}
+	
+		newItam.setAttribute("class", "iteam")
+		node.appendChild(newItam)
+		newItam.appendChild(elImg)
+		newItam.appendChild(elId)
+		newItam.appendChild(elNum)
+		newItam.appendChild(elType)
+		newItam.appendChild(elHeight)
+		newItam.appendChild(elWeight)
+		newItam.appendChild(elCandy)
+		newItam.appendChild(elEgg)
+		newItam.appendChild(elSpawn_chance)
+		newItam.appendChild(elAvg_spawns)
+		newItam.appendChild(elSpawn_time)
+		newItam.appendChild(multipliers)
+		newItam.appendChild(weaknesses)
+		newItam.appendChild(evolution)
+	
+	
+	elId.textContent = `id: ${i.id}`;
+	elNum.textContent = `num: ${i.num}`
+	elImg.src = `${i.img}`
+	elImg.setAttribute("alt", "images-pocemens")
+	elImg.setAttribute("class", "img")
+	elImg.setAttribute("with", "120")
+	elImg.setAttribute("height", "120")
+	elType.textContent = `type: ${i.type}`
+	elHeight.textContent = `height: ${i.height}`
+	elWeight.textContent = `weight: ${i.weight}`
+	elCandy.textContent = `candy: ${i.candy}`
+	elEgg.textContent = `egg: ${i.egg}`
+	elSpawn_chance.textContent = `spawn_chance: ${i.spawn_chance}`
+	elAvg_spawns.textContent = `avg_spawns: ${i.avg_spawns}`
+	elSpawn_time.textContent = `spawn_time: ${i.spawn_time}`
+	multipliers.textContent = `multipliers: ${i.multipliers}`
+	weaknesses.textContent = `weaknesses: ${i.weaknesses}`
+	evolution.textContent = `prev_evolution: ${"num:"} ${ola} ${"name:"} ${bang}`
+	}
 }
 
+Domgachiqaraqol(pokemons,elList);
 
+var elSelect = document.querySelector(".js-select");
+
+
+let c = []
+function pic(arr){
+	for (i of arr){
+			
+			c.push(i.type[0])
+
+			var newIt = document.createElement('option');
+
+			newIt.textContent = i.type;
+
+			elSelect.appendChild(newIt); 
+	}
+	console.log(new Set(c));
+	
+}
+pic(pokemons)
+
+
+var result = [];
+
+elSelect.addEventListener("change",function(){
+	elList.innerHTML = "";
+	result = [];
+  pokemons.forEach((poc) => {
+    if(poc.type.includes(elSelect.value)){
+      result.push(poc);
+    }
+  })
+	Domgachiqaraqol(result,elList);
+});
