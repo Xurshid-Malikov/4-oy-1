@@ -3483,19 +3483,19 @@ function Domgachiqaraqol(array, node){
 	for (i of array){
 		var newItam = document.createElement("li");
 		var elImg = document.createElement("img");
-		var elId = document.createElement("span");
-		var elNum = document.createElement("span");
-		var elType = document.createElement("span");
-		var elHeight = document.createElement("span");
-		var elWeight = document.createElement("span");
-		var elCandy = document.createElement("span");
-		var elEgg = document.createElement("span");
-		var elSpawn_chance = document.createElement("span");
-		var elAvg_spawns = document.createElement("span");
-		var elSpawn_time = document.createElement("span");
-		var multipliers = document.createElement("span");
-		var weaknesses = document.createElement("span");
-		var evolution = document.createElement("span");
+		var elId = document.createElement("h2");
+		var elNum = document.createElement("strong");
+		var elType = document.createElement("strong");
+		var elHeight = document.createElement("strong");
+		var elWeight = document.createElement("strong");
+		var elCandy = document.createElement("strong");
+		var elEgg = document.createElement("strong");
+		var elSpawn_chance = document.createElement("strong");
+		var elAvg_spawns = document.createElement("strong");
+		var elSpawn_time = document.createElement("strong");
+		var multipliers = document.createElement("strong");
+		var weaknesses = document.createElement("strong");
+		var evolution = document.createElement("strong");
 		if(i.prev_evolution){
 			var ola = i.prev_evolution[0].num
 			var bang = i.prev_evolution[0].name
